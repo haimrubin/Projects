@@ -1,0 +1,19 @@
+.header {
+  position: fixed;
+  top:0;
+  left:0;
+  background-color: #1f1f1f;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font: inherit;
+  box-shadow: 0 2px 8px black;
+  
+}
+.name{
+  padding: 0 5%;
+  font-size: 40px;
+  font-weight: bold;
+}

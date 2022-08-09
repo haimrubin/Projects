@@ -1,0 +1,11 @@
+.images {
+  
+  color: aliceblue;
+}
+
+
+.images img {
+  padding: 3px;
+  border-radius: 10px;
+  border-color: black;
+}

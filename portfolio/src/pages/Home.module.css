@@ -1,0 +1,47 @@
+
+
+.text {
+  width: 50%;
+  margin-left: 25%;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 2rem;
+}
+
+.image-container {
+    background-image: url("../photos/walcomeBackGround.jpg"); /* The image used - important! */
+    background-size: cover;
+    /* position: relative; */
+    height: 300px; 
+    
+  }
+  
+  .title {
+    background-color: #4B556B;
+    color: black;
+    font-size: 5vw; 
+    font-weight: bold;
+    margin: 0 auto; 
+    width: 100%;
+    text-align: center; 
+    position: relative; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    mix-blend-mode: screen; 
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7076fe,
+      0 0 40px #7076fe, 0 0 50px #7076fe, 0 0 60px #7076fe, 0 0 70px #7076fe;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #4b556b, 0 0 40px #4b556b,
+      0 0 50px #4b556b, 0 0 60px #4b556b, 0 0 70px #4b556b, 0 0 80px #4b556b;
+  }
+}
+

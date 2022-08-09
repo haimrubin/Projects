@@ -1,0 +1,10 @@
+.card {
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.card h1 {
+  color: #4b556b;
+}

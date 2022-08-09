@@ -1,0 +1,18 @@
+.links {
+   
+    padding: 2rem;
+
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.links a:hover,
+.links a:active{
+  color: #f07272;
+  
+}
+

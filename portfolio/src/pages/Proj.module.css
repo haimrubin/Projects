@@ -1,0 +1,22 @@
+.projs {
+  margin: 5rem auto;
+  width: 60%;
+  animation: proj-appear 1s ease-out forwards;
+}
+
+.projs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes proj-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(2rem);
+  }
+}
