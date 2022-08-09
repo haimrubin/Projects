@@ -1,0 +1,42 @@
+.add_player {
+    
+  width: 80%;
+  margin-left: 10%;
+  font-size: 1.5rem;
+}
+
+.add_player label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.add_player h2 {
+    border-bottom: 1px solid #ccc;
+    
+  }
+
+.add_player input {
+  padding: 1rem;
+  background-color: aliceblue;
+  border-radius: 50px;
+  border-color: aliceblue;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.add_player button {
+  border-radius: 50px;
+  width: 15rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add_player button:hover,
+.add_player button:active {
+  background-color: brown;
+  color: aliceblue;
+  border-color: aliceblue;
+}

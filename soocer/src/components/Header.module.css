@@ -1,0 +1,32 @@
+.header {
+  color: brown;
+  box-shadow: 0 5px 5px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.header button {
+  background-color: brown;
+  padding: 1rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.header button:hover,
+.header button:active {
+  background-color: brown;
+  color: aliceblue;
+  border-color: aliceblue;
+}

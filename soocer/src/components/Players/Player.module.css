@@ -1,0 +1,25 @@
+.player {
+  font-size: xx-large;
+  display: flex;
+  color: aliceblue;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
+  
+}
+
+.player button {
+  border-radius: 50px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 15px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.player button:hover,
+.player button:active {
+  background-color: brown;
+  color: aliceblue;
+  border-color: aliceblue;
+}
