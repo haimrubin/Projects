@@ -13,7 +13,7 @@
     top: 20vh;
     left: 5%;
     width: 90%;
-    background-color: brown;
+    background-color: #1d2539;
     padding: 1rem;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -22,7 +22,7 @@
   }
 
   .modal button {
-    background-color: brown;
+    background-color: #fe3b32;
     padding: 0.5rem;
     border-radius: 50px;
     font-weight: bold;
@@ -32,9 +32,9 @@
   
   .modal button:hover,
   .modal button:active {
-    background-color: brown;
-    color: aliceblue;
-    border-color: aliceblue;
+    background-color: #fe3b32;
+    color: #f2f3f7;
+    border-color: #f2f3f7;
   }
   
   @media (min-width: 768px) {

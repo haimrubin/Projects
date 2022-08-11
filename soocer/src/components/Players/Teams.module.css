@@ -1,0 +1,12 @@
+
+.teams{
+    display: flex;
+    margin-left: 25%;
+    width: 50%;
+    background-color: #1d2539;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px 10px #fad8cd;
+    justify-content: space-between;
+
+
+}

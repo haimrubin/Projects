@@ -5,12 +5,14 @@ import LogInForm from "./components/LogIn/LogInForm";
 import Players from "./components/Players/Players";
 import PlayingToday from "./components/Players/PlayingToday";
 import AddPlayer from "./components/Players/AddPlayer";
-import AuthContext from "./components/store/auth-context";
+import Context from "./components/store/context";
+import Teams from "./components/Players/Teams";
 
 function App() {
-  const authCtx = useContext(AuthContext);
+  const ctx = useContext(Context);
   const [playingFlag, setPlayingFlag] = useState(false);
   const [addFlag, setAddFlag] = useState(false);
+  const [chooseFlag, setChooseFlag] = useState(false);
 
   const showPlaying = () => {
     setPlayingFlag(true);
@@ -26,16 +28,27 @@ function App() {
     setAddFlag(false);
   };
 
+  const showChoose = () => {
+    setChooseFlag(true);
+    console.log("sadfasd");
+  };
+
   return (
     <div>
       <header>
         <Header onShow={showPlaying} onAdd={showAdd} />
       </header>
       <main>
-        {!authCtx.isLoggedIn && <LogInForm></LogInForm>}
+        {!ctx.isLoggedIn && <LogInForm></LogInForm>}
         {addFlag && <AddPlayer onHide={hideAdd}></AddPlayer>}
-        {authCtx.isLoggedIn && <Players></Players>}
-        {playingFlag && <PlayingToday onHide={hidePlaying}></PlayingToday>}
+        {ctx.isLoggedIn && <Players></Players>}
+        {playingFlag && (
+          <PlayingToday
+            onChoose={showChoose}
+            onHide={hidePlaying}
+          ></PlayingToday>
+        )}
+        {chooseFlag && <Teams></Teams>}
       </main>
     </div>
   );

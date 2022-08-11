@@ -3,97 +3,97 @@ import React, { useEffect, useReducer, useState } from "react";
 const data = [
   {
     id: 209467281,
-    name: "haim",
+    name: "חיים",
     level: 2,
     team: 0,
   },
   {
     id: 4354354,
-    name: "idan",
+    name: "עידן",
     level: 3,
     team: 0,
   },
   {
     id: 768954,
-    name: "fser",
+    name: "איליי",
     level: 5,
     team: 0,
   },
   {
     id: 3,
-    name: "haim",
+    name: "עילאי",
     level: 2,
     team: 0,
   },
   {
     id: 2,
-    name: "idan",
+    name: "אדיר",
     level: 3,
     team: 0,
   },
   {
     id: 1,
-    name: "fser",
+    name: "אפיק",
     level: 5,
     team: 0,
   },
   {
     id: 6,
-    name: "haim",
+    name: "גוני",
     level: 2,
     team: 0,
   },
   {
     id: 5,
-    name: "idan",
+    name: "יעקב",
     level: 3,
     team: 0,
   },
   {
     id: 4,
-    name: "fser",
+    name: "משה",
     level: 5,
     team: 0,
   },
   {
     id: 9,
-    name: "haim",
+    name: "דוד",
     level: 2,
     team: 0,
   },
   {
     id: 8,
-    name: "idan",
+    name: "אליהו",
     level: 3,
     team: 0,
   },
   {
     id: 7,
-    name: "fser",
+    name: "צורי",
     level: 5,
     team: 0,
   },
   {
     id: 12,
-    name: "haim",
+    name: "ניסים",
     level: 2,
     team: 0,
   },
   {
     id: 11,
-    name: "idan",
+    name: "תומר",
     level: 3,
     team: 0,
   },
   {
     id: 10,
-    name: "fser",
+    name: "טמפו",
     level: 5,
     team: 0,
   },
 ];
 
-const AuthContext = React.createContext({
+const Context = React.createContext({
   players: [],
   playingToday: [],
   notPlaying: [],
@@ -104,6 +104,7 @@ const AuthContext = React.createContext({
   onLogout: () => {},
   newPlayer: (player) => {},
   deletePlayer: (player) => {},
+  makeChoose: () => {},
 });
 const defaultPlayers = {
   players: [...data],
@@ -130,13 +131,13 @@ const playerReducer = (state, action) => {
     const newPlayingList = state.playing.filter(
       (item) => item.id !== rmvPlayer.id
     );
+
     return {
       playing: newPlayingList,
       notPlaying: newNotPlaying,
       players: state.players,
     };
-  }
-  else if (action.type === "NEW") {
+  } else if (action.type === "NEW") {
     const newList = state.players.concat(action.player);
     const newNotPlaying = [action.player, ...state.notPlaying];
     return {
@@ -144,22 +145,44 @@ const playerReducer = (state, action) => {
       notPlaying: newNotPlaying,
       players: newList,
     };
-  }
-  else if (action.type === "DEL") {
-    const newList = state.players.filter(item => item.id !== action.id)
-    const newNotPlaying = state.notPlaying.filter(item => item.id !== action.id)
-    
+  } else if (action.type === "DEL") {
+    const newList = state.players.filter((item) => item.id !== action.id);
+    const newNotPlaying = state.notPlaying.filter(
+      (item) => item.id !== action.id
+    );
+
     return {
       playing: state.playing,
       notPlaying: newNotPlaying,
       players: newList,
+    };
+  } else if (action.type === "CHOOSE") {
+    let sortList = [...state.playing];
+    sortList = sortList.sort((a, b) =>
+      a.level > b.level ? -1 : b.level > a.level ? 1 : 0
+    );
+    let playersInTeam;
+    if (sortList.length > 15) {
+      playersInTeam = 4;
+    } else {
+      playersInTeam = 3;
+    }
+    const colors = ["red", "blue", "yellow", "white"];
+
+    for (let index = 0; index < sortList.length; index++) {
+      sortList[index].team = colors[index % playersInTeam];
+    }
+    return {
+      playing: sortList,
+      notPlaying: state.notPlaying,
+      players: state.players,
     };
   }
 
   return defaultPlayers;
 };
 
-export const AuthContextProvider = (props) => {
+export const ContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [playersState, dispatchPlayerState] = useReducer(
     playerReducer,
@@ -180,6 +203,10 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(false);
   };
 
+  const chooseHandler = () => {
+    dispatchPlayerState({ type: "CHOOSE" });
+  };
+
   const addPlayerTodayHandler = (player) => {
     dispatchPlayerState({ type: "ADD", player: player });
   };
@@ -194,7 +221,7 @@ export const AuthContextProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider
+    <Context.Provider
       value={{
         players: data,
         playingToday: playersState.playing,
@@ -203,6 +230,7 @@ export const AuthContextProvider = (props) => {
         rmvPlayerToday: rmvPlayerTodayHandler,
         newPlayer: newPlayerHandler,
         deletePlayer: delPlayerHandler,
+        makeChoose: chooseHandler,
 
         isLoggedIn: isLoggedIn,
         onLogin: loginHandler,
@@ -210,8 +238,8 @@ export const AuthContextProvider = (props) => {
       }}
     >
       {props.children}
-    </AuthContext.Provider>
+    </Context.Provider>
   );
 };
 
-export default AuthContext;
+export default Context;

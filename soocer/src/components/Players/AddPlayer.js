@@ -1,10 +1,10 @@
 import { useContext, useRef } from "react";
-import AuthContext from "../store/auth-context";
+import Context from "../store/context";
 import Card from "../UI/Card";
 import classes from "./AddPlayer.module.css";
 
 const AddPlayer = (props) => {
-  const ctx = useContext(AuthContext);
+  const ctx = useContext(Context);
   const name = useRef();
   const id = useRef();
   const level = useRef();

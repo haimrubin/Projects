@@ -1,10 +1,10 @@
 import { useContext,useRef } from "react";
-import AuthContext from "../store/auth-context";
+import Context from "../store/context";
 import Card from "../UI/Card";
 import classes from "./LogInForm.module.css";
 
 const LogInForm = () => {
-  const authCtx = useContext(AuthContext);
+  const authCtx = useContext(Context);
   const userName = useRef();
   const password = useRef();
 

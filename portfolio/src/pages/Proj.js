@@ -4,6 +4,13 @@ import classes from "./Proj.module.css";
 
 const data = [
   {
+    key: "p2",
+    title: "My Portfolio",
+    txt: "an example of one of my projects,represent my other project's and showing about me and my life",
+    link: "https://protfolio-441f6.web.app/home",
+    git: "https://github.com/haimrubin/Projects/tree/main/portfolio",
+  },
+  {
     key: "p1",
     title: "News Site",
     txt: "online news website that interact with users",
@@ -11,18 +18,11 @@ const data = [
     git: "https://github.com/haimrubin/Projects/tree/main/News%20app",
   },
   {
-    key: "p2",
-    title: "My Portfolio",
-    txt: "an example of one of my projects,represent my other project's and showing about me and my life",
-    link: "/home",
-    git: "https://github.com/haimrubin/Projects/tree/main",
-  },
-  {
     key: "p3",
     title: "Soccer",
     txt: "app to manage your football teams when you play with your friends",
     link: "",
-    git: "https://github.com/haimrubin/Projects/tree/main",
+    git: "https://github.com/haimrubin/Projects/tree/main/soocer",
   },
 ];
 

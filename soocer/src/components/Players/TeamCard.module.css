@@ -1,0 +1,26 @@
+
+.team{
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.blue{
+    color: #689bcc;
+}
+
+.red{
+    color: #fe3b32;
+}
+
+.white{
+    color: #f2f3f7;
+}
+
+.yellow{
+    color: #e5c554;
+}
+
+.team li{
+    list-style: none;
+}
+

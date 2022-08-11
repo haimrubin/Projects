@@ -1,7 +1,7 @@
 .player {
   font-size: xx-large;
   display: flex;
-  color: aliceblue;
+  color: #f2f3f7;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
   padding: 1rem;
@@ -19,7 +19,7 @@
 
 .player button:hover,
 .player button:active {
-  background-color: brown;
-  color: aliceblue;
-  border-color: aliceblue;
+  background-color: #fe3b32;
+  color: #f2f3f7;
+  border-color: #f2f3f7;
 }

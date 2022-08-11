@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import classes from "./Header.module.css";
-import AuthContext from "./store/auth-context";
+import AuthContext from "./store/context";
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
   

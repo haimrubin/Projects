@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import AuthContext from "../store/auth-context";
+import Context from "../store/context";
 import Modal from "../UI/Modal";
 import Player from "./Player";
-import classes from './PlayingToday.module.css'
+import classes from "./PlayingToday.module.css";
 
 const PlayingToday = (props) => {
-  const ctx = useContext(AuthContext);
+  const ctx = useContext(Context);
   const [lessPlayers, setLessPlayers] = useState(false);
   const [manyPlayers, setManyPlayers] = useState(false);
   const [numOfPlayers, setNumOfPlayers] = useState();
@@ -14,19 +14,19 @@ const PlayingToday = (props) => {
   };
   const teamsHandler = () => {
     setNumOfPlayers(ctx.playingToday.length);
-    if(ctx.playingToday.length < 15){
-        setLessPlayers(true);
-        return;
+    if (ctx.playingToday.length < 15) {
+      setLessPlayers(true);
+      return;
     }
-    if(ctx.playingToday.length > 20){
-        setManyPlayers(true);
-        return;
+    if (ctx.playingToday.length > 20) {
+      setManyPlayers(true);
+      return;
     }
     setLessPlayers(false);
     setManyPlayers(false);
-    
-
-  }
+    ctx.makeChoose();
+    props.onChoose();
+  };
   const playerList = (
     <ul className={classes.playing}>
       {ctx.playingToday.map((item) => (
@@ -50,7 +50,9 @@ const PlayingToday = (props) => {
       </div>
       {lessPlayers && <h2>מינימום שחקים לבחירות:15</h2>}
       {manyPlayers && <h2>מקסימום שחקנים לבחירות:20</h2>}
-      {(manyPlayers || lessPlayers) && <h2>{numOfPlayers} :מספר שחקנים כרגע</h2>}
+      {(manyPlayers || lessPlayers) && (
+        <h2>{numOfPlayers} :מספר שחקנים כרגע</h2>
+      )}
     </Modal>
   );
 };

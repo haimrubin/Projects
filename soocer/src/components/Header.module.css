@@ -1,6 +1,6 @@
 .header {
-  color: brown;
-  box-shadow: 0 5px 5px;
+  color: #fe3b32;
+  box-shadow: 0 1px 10px #f2f3f7;
   top: 0;
   left: 0;
   width: 100%;
@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: #1d2539;
 }
 
 .header h1 {
@@ -16,7 +17,7 @@
 }
 
 .header button {
-  background-color: brown;
+  background-color: #fe3b32;
   padding: 1rem;
   border-radius: 50px;
   font-weight: bold;
@@ -26,7 +27,7 @@
 
 .header button:hover,
 .header button:active {
-  background-color: brown;
-  color: aliceblue;
-  border-color: aliceblue;
+  background-color: #fe3b32;
+  color: #f2f3f7;
+  border-color: #f2f3f7;
 }

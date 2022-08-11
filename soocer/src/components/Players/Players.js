@@ -1,21 +1,22 @@
 import { useContext } from "react";
-import AuthContext from "../store/auth-context";
+import Context from "../store/context";
 import Card from "../UI/Card";
 import Player from "./Player";
 
+
 const Players = () => {
-  const authCtx = useContext(AuthContext);
+  const ctx = useContext(Context);
 
   const addHandler = (id) => {
-    const playerIndex = authCtx.notPlaying.findIndex((item) => item.id === id);
-    const addPlayer = authCtx.notPlaying[playerIndex];
+    const playerIndex = ctx.notPlaying.findIndex((item) => item.id === id);
+    const addPlayer = ctx.notPlaying[playerIndex];
 
-    authCtx.addPlayerToday(addPlayer);
+    ctx.addPlayerToday(addPlayer);
   };
 
   const playerList = (
     <ul>
-      {authCtx.notPlaying.map((item) => (
+      {ctx.notPlaying.map((item) => (
         <Player
           act="הוסף לבחירות"
           id={item.id}
@@ -23,7 +24,7 @@ const Players = () => {
           name={item.name}
           level={item.level}
           onAdd={addHandler}
-          onDelete={authCtx.deletePlayer}
+          onDelete={ctx.deletePlayer}
         ></Player>
       ))}
     </ul>
