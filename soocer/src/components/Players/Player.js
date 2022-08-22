@@ -1,6 +1,7 @@
 import classes from "./Player.module.css";
 
 const Player = (props) => {
+  
   const addHandler = () => {
     props.onAdd(props.id);
   };

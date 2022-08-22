@@ -1,0 +1,58 @@
+package components;
+
+/**
+ * @author HaimRubin-209467281 & MatanFadida-315585505
+ * <br>This class represents non-standard size packages.
+ * <br>extend from @Package
+ * <p>fields:<br>width,length and height (integer)
+ */
+
+
+public class NonStandardPackage extends Package {
+	private int width, length, height;	
+	
+	public NonStandardPackage(Priority priority, Address senderAddress,Address destinationAdress,int width, int length, int height) {
+			super( priority, senderAddress,destinationAdress);
+			this.width=width;
+			this.length=length;
+			this.height=height;	
+			System.out.println("Creating " + this);
+	}
+	
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
+	
+	public int getLength() {
+		return length;
+	}
+	
+	
+	public void setLength(int length) {
+		this.length = length;
+	}
+	
+	
+	public int getHeight() {
+		return height;
+	}
+	
+	
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "NonStandardPackage ["+super.toString() + ", width=" + width + ", length=" + length + ", height=" + height + "]";
+	}
+	
+}

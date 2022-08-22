@@ -1,24 +1,36 @@
-import { useContext, useRef } from "react";
-import Context from "../store/context";
+import { useRef } from "react";
 import Card from "../UI/Card";
 import classes from "./AddPlayer.module.css";
 
 const AddPlayer = (props) => {
-  const ctx = useContext(Context);
+  async function addPlayer(player) {
+    await fetch(
+      "https://soocer-959bb-default-rtdb.firebaseio.com/players.json",
+      {
+        method: "POST",
+        body: JSON.stringify(player),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    props.refresh();
+  }
   const name = useRef();
-  const id = useRef();
   const level = useRef();
 
   const addHandler = (event) => {
     event.preventDefault();
     const player = {
-      id: id.current.value,
       name: name.current.value,
       level: level.current.value,
       team: 0,
+      playing: false,
     };
-    ctx.newPlayer(player);
+    // ctx.newPlayer(player);
 
+    addPlayer(player);
+    
     props.onHide();
   };
 
@@ -29,14 +41,6 @@ const AddPlayer = (props) => {
         <div>
           <input ref={name} type="text" placeholder="שם ושם משפחה"></input>
           <label> :שם השחקן</label>
-        </div>
-        <div>
-          <input
-            ref={id}
-            type="number"
-            placeholder="הכנס תז כולל ספרת ביקורת"
-          ></input>
-          <label> :ת"ז</label>
         </div>
         <div>
           <input

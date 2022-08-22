@@ -1,35 +1,52 @@
-import { useContext, useState } from "react";
-import Context from "../store/context";
+import {  useState } from "react";
 import Modal from "../UI/Modal";
 import Player from "./Player";
 import classes from "./PlayingToday.module.css";
 
 const PlayingToday = (props) => {
-  const ctx = useContext(Context);
   const [lessPlayers, setLessPlayers] = useState(false);
   const [manyPlayers, setManyPlayers] = useState(false);
   const [numOfPlayers, setNumOfPlayers] = useState();
-  const removeHandler = (id) => {
-    ctx.rmvPlayerToday(id);
-  };
+
+  async function removeHandler(id) {
+    const playerIndex = props.players.findIndex((item) => item.id === id);
+    const rmvPlayer = props.players[playerIndex];
+
+    const url =
+      "https://soocer-959bb-default-rtdb.firebaseio.com/players/" +
+      id +
+      ".json";
+    await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({ ...rmvPlayer, playing: false, team: 0 }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    props.refresh();
+  }
+
+  const todayList = props.players.filter((item) => item.playing === true);
+
   const teamsHandler = () => {
-    setNumOfPlayers(ctx.playingToday.length);
-    if (ctx.playingToday.length < 15) {
+    setNumOfPlayers(todayList.length);
+    if (todayList.length < 15) {
       setLessPlayers(true);
       return;
     }
-    if (ctx.playingToday.length > 20) {
+    if (todayList.length > 20) {
       setManyPlayers(true);
       return;
     }
     setLessPlayers(false);
     setManyPlayers(false);
-    ctx.makeChoose();
-    props.onChoose();
+    props.makeTeams();
+    props.refresh();
   };
+
   const playerList = (
     <ul className={classes.playing}>
-      {ctx.playingToday.map((item) => (
+      {todayList.map((item) => (
         <Player
           act="מחק מבחירות"
           id={item.id}

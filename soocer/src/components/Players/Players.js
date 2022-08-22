@@ -1,36 +1,57 @@
-import { useContext } from "react";
-import Context from "../store/context";
+
+
 import Card from "../UI/Card";
 import Player from "./Player";
 
+const Players = (props) => {
+  async function addHandler(id) {
+    const playerIndex = props.players.findIndex((item) => item.id === id);
+    const addedPlayer = props.players[playerIndex];
 
-const Players = () => {
-  const ctx = useContext(Context);
+    const url =
+      "https://soocer-959bb-default-rtdb.firebaseio.com/players/" +
+      id +
+      ".json";
+    await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({ ...addedPlayer, playing: true }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    props.refresh();
+  }
 
-  const addHandler = (id) => {
-    const playerIndex = ctx.notPlaying.findIndex((item) => item.id === id);
-    const addPlayer = ctx.notPlaying[playerIndex];
+  async function deleteHandler(id) {
+    const url =
+      "https://soocer-959bb-default-rtdb.firebaseio.com/players/" +
+      id +
+      ".json";
+    await fetch(url, {
+      method: "DELETE",
+    });
+    props.refresh();
+  }
 
-    ctx.addPlayerToday(addPlayer);
-  };
-
-  const playerList = (
+  const notPlaying = props.players.filter(item => item.playing === false)
+  const playersList = (
     <ul>
-      {ctx.notPlaying.map((item) => (
+      {notPlaying.map((item) => (
         <Player
           act="הוסף לבחירות"
           id={item.id}
           key={item.id}
           name={item.name}
           level={item.level}
+          playing={false}
+          onDelete={deleteHandler}
           onAdd={addHandler}
-          onDelete={ctx.deletePlayer}
         ></Player>
       ))}
     </ul>
   );
 
-  return <Card>{playerList}</Card>;
+  return <Card>{playersList}</Card>;
 };
 
 export default Players;

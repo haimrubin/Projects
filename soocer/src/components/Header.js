@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import classes from "./Header.module.css";
-import AuthContext from "./store/context";
+import AuthContext from "./store/auth-context";
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
   
@@ -10,9 +10,11 @@ const Header = (props) => {
       <h1>כדורגל כלניות</h1>
       {authCtx.isLoggedIn && (
         <div>
+          <button onClick={props.onChoose}>{props.choose} קבוצות</button>
           <button onClick={authCtx.onLogout}>התנתק</button>
           <button onClick={props.onShow}>משחקים היום</button>
           <button onClick={props.onAdd}>שחקן חדש</button>
+
         </div>
       )}
       

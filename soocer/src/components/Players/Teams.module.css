@@ -1,12 +1,19 @@
 
 .teams{
-    display: flex;
-    margin-left: 25%;
-    width: 50%;
+    
+    margin-left: 10%;
+    width: 80%;
     background-color: #1d2539;
     border-radius: 20px;
     box-shadow: 0 2px 20px 10px #fad8cd;
+    text-align: center;
+    margin-bottom: 3rem;
+    
+
+
+}
+
+.cards{
+    display: flex;
     justify-content: space-between;
-
-
 }
