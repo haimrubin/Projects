@@ -27,7 +27,6 @@ const AddPlayer = (props) => {
       team: 0,
       playing: false,
     };
-    // ctx.newPlayer(player);
 
     addPlayer(player);
     

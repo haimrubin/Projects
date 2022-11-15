@@ -15,15 +15,18 @@ function App() {
   const [chooseFlag, setChooseFlag] = useState(false);
 
   const [playerList, setPlayerList] = useState([]);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState()
 
   const fetchPlayers = useCallback(async () => {
-    try {
+    
       const response = await fetch(
         "https://soocer-959bb-default-rtdb.firebaseio.com/players.json"
       );
       if (!response.ok) {
         throw new Error("Something went wrong! try to reload the page");
       }
+
 
       const data = await response.json();
 
@@ -40,14 +43,29 @@ function App() {
       }
 
       setPlayerList(players);
-    } catch (error) {
-      console.log(error.message);
-    }
+      setLoading(false)
+    
   }, []);
 
+
   useEffect(() => {
-    fetchPlayers();
+    fetchPlayers().catch((error) => {
+      setLoading(false)
+      setError(error.message);
+    })
   }, [fetchPlayers, chooseFlag]);
+
+  if(error){
+    return <section className="error">
+      <p>{error}, please try to reload the page!</p>
+    </section>
+  }
+  if(loading){
+    return <section className="loading">
+      <p>Loading....</p>
+    </section>
+  }
+
 
   async function changeTeam(id, color) {
     const playerIndex = playerList.findIndex((item) => item.id === id);
@@ -106,6 +124,8 @@ function App() {
   };
 
   const choose = chooseFlag ? "הסתר" : "הראה"
+
+ 
 
   return (
     <div>

@@ -14,7 +14,19 @@
   }
 }
 
+.loading{
+  text-align: center;
+  color: aliceblue;
+  font-size: 30px;
+  margin-top: 8rem;
+}
 
+.error{
+  text-align: center;
+  color: red;
+  font-size: 30px;
+  margin-top: 8rem;
+}
 
 .App-header {
   background-color: #282c34;
