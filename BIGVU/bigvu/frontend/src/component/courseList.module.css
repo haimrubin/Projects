@@ -1,0 +1,36 @@
+.container {
+  width: 90%;
+  margin: auto;
+  color: #253658;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 13px;
+}
+
+.abstract{
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  
+  
+}
+
+@media (min-width: 600px) {
+  .container{
+    width: 97%;
+  }
+
+
+ 
+}
+
